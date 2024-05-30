@@ -1,4 +1,4 @@
-pub fn desafio_um(dados: &str) -> i32 {
+pub fn calibration_values(dados: &str) -> i32 {
     dados.lines().filter_map(|linha| {
         println!("{}", linha);
         let numeros_da_linha = || linha.chars().filter(char::is_ascii_digit);
@@ -11,7 +11,7 @@ pub fn desafio_um(dados: &str) -> i32 {
 
 #[test]
 fn exemplo_desafio_um() {
-    let soma = desafio_um("1abc2
+    let soma = calibration_values("1abc2
 pqr3stu8vwx
 a1b2c3d4e5f
 sevenine
