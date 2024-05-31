@@ -1,6 +1,6 @@
 use crate::desafios::desafio_um_dia_um::calibration_values;
 
-pub fn spelledOutWithLetters(dados: &str) -> String {
+pub fn spelled_out_with_letters(dados: &str) -> String {
     let mut texto_formatado = String::new();
     dados.lines().for_each(|linhas| {
         texto_formatado.push_str(&linhas.replace("one", "on1e")
@@ -22,7 +22,7 @@ pub fn spelledOutWithLetters(dados: &str) -> String {
 
 #[test]
 fn exemplo_desafio_dois() {
-    let texto_formatado = spelledOutWithLetters("two1nine
+    let texto_formatado = spelled_out_with_letters("two1nine
 eightwothree
 abcone2threexyz
 xtwone3four
