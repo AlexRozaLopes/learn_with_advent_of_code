@@ -4,7 +4,7 @@ use crate::modelos::game::Game;
 pub fn valid_games(dados: &str) -> i32 {
     let games = split_game(dados);
     games.iter().filter(|game|{
-        game.red <= 12 && game.green <= 13 && game.blue <= 14
+        game.valid == true
     }).map(|game| {
         println!("{game:?}");
         game.id
@@ -16,10 +16,10 @@ fn split_game(dados: &str) -> Vec<Game> {
     let mut games: Vec<Game> = vec![];
 
     dados.lines().for_each(|linha| {
-        let linha_formatada = linha.replace(":",",").replace(";",",");
+        let mut linha_formatada = linha.replace(":", ",").replace(";", "*,");
         let game_formatado: Vec<&str> = linha_formatada.split(",").collect();
 
-        let mut game = Game::new(0, 0, 0, 0);
+        let mut game = Game::new(0, 0, 0, 0, true);
 
         for game_conteudo in game_formatado {
             if game_conteudo.contains("Game") {
@@ -36,8 +36,16 @@ fn split_game(dados: &str) -> Vec<Game> {
                 game.blue = game.blue.add(find_valor(game_conteudo))
             };
 
-            //println!("{game_conteudo}");
-            //println!("{game:?}");
+            game.valid = game.red <= 12 && game.green <= 13 && game.blue <= 14 && game.valid == true;
+
+
+            if game_conteudo.contains("*") {
+                game.red = 0;
+                game.green = 0;
+                game.blue = 0
+            };
+            // println!("{game_conteudo}");
+            // println!("{game:?}");
 
         }
         games.push(game);
