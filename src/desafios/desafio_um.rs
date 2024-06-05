@@ -32,7 +32,7 @@ pub fn spelled_out_with_letters(dados: &str) -> String {
 
 
 #[test]
-fn exemplo_desafio_um() {
+fn exemplo_desafio() {
     let soma = calibration_values("1abc2
 pqr3stu8vwx
 a1b2c3d4e5f
@@ -44,7 +44,7 @@ treb7uchet");
 
 
 #[test]
-fn exemplo_desafio_dois() {
+fn exemplo_desafio_parte_dois() {
     let texto_formatado = spelled_out_with_letters("two1nine
 eightwothree
 abcone2threexyz
